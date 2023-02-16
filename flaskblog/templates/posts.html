@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="card mb-3" style="background-color: rgb(33 36 41);">
+        <div class="row g-0">
+            <div class="col-md-1 pt-4 pb-2 ps-3">
+                <img src="{{ url_for('static',filename='images/{}'.format(post.author.profile_img)) }}" class="rounded-circle art_img" alt="profile pic">
+            </div>
+            <div class="col-md-9 pt-3">
+                <div class="card-body">
+                <h5 class="card-title mb-3 txt">{{ post.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    <p class="me-2" style="display: inline-block;">{{ post.author.username }}</p>
+                    <p class="text-muted" style="display: inline-block;">{{ post.date.strftime('%Y-%m-%d') }}</p>
+                </h6>
+                <p class="card-text txt">{{ post.content }}</p>
+                {% if post.author == current_user %}
+                <a href="{{ url_for('update_post',post=post.id) }}" class="btn btn-info">Update</a>
+                <!-- Button trigger modal -->
+                
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                    Delete
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content"  style="background-color: rgb(33 36 41);">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete post</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body txt">
+                            Are you sure that you want to delete this post?
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="{{ url_for('delete_post',post=post.id) }}" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            </div>
+            </div>
+    </div>
+{% endblock content %}

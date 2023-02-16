@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+    <h2>Login</h2>
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.email.label(class='form-label txt') }}
+            {% if form.email.errors %}
+                {{ form.email(class='form-control w-50 is-invalid') }}
+                {% for error in form.email.errors %}
+                    <span class="invalid-feedback">{{ error }}</span>
+                {% endfor %}
+            {% else %}
+                {{ form.email(class='form-control w-50') }}
+            {% endif %}            
+        </div>
+        <div class="mb-3">
+            {{ form.password.label(class='form-label txt') }}
+            {% if form.password.errors %}
+                {{ form.password(class='form-control w-50 is-invalid') }}
+                {% for error in form.password.errors %}
+                    <span class="invalid-feedback">{{ error }}</span>
+                {% endfor %}
+            {% else %}
+                {{ form.password(class='form-control w-50') }}
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.remember(class='form-check-input') }}
+            {{ form.remember.label(class='form-check-label txt ms-2') }}
+        </div>
+        <div class="mb-3">
+            {{ form.submit(class='btn btn-primary me-5') }}
+        </div>
+        <small class="mb-3 txt">
+            Don't have an account? <a href="url_for('register')" class="ms-2">Sign Up</a>
+        </small>
+    </form>
+{% endblock content %}

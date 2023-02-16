@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+    {% for post in posts %}
+    <div class="card mb-3" style="background-color: rgb(33 36 41);">
+    <div class="row g-0">
+        <div class="col-md-1 pt-4 pb-2 ps-3">
+            <img src="{{ url_for('static',filename='images/{}'.format(post.author.profile_img)) }}" class="rounded-circle art_img" alt="profile pic">
+        </div>
+        <div class="col-md-9 pt-3">
+            <div class="card-body">
+            <h5 class="card-title mb-3 txt"><a href="{{ url_for('post',post=post.id) }}" class="nav-link">{{ post.title }}</a></h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+                <p class="me-2" style="display: inline-block;">{{ post.author.username }}</p>
+                <p class="text-muted" style="display: inline-block;">{{ post.date.strftime('%Y-%m-%d') }}</p>
+            </h6>
+            <p class="card-text txt">{{ post.content }}</p>
+        </div>
+        </div>
+        </div>
+    </div>
+        
+    {% endfor %}
+
+{% endblock content %}

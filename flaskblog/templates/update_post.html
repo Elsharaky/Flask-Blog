@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2> Update post </h1>
+<form action="" method="POST">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+        {{ form.title.label(class='form-label txt') }}
+        {% if form.title.errors %}
+            {{ form.title(class='form-control w-50 is-invalid') }}
+            {% for error in form.title.errors %}
+                <span class="invalid-feedback">{{ error }}</span>
+            {% endfor %}
+        {% else %}
+            {{ form.title(class='form-control w-50') }}
+        {% endif %}            
+    </div>
+    <div class="mb-3">
+        {{ form.content.label(class='form-label txt') }}
+        {% if form.content.errors %}
+            {{ form.content(class='form-control w-50 is-invalid') }}
+            {% for error in form.content.errors %}
+                <span class="invalid-feedback">{{ error }}</span>
+            {% endfor %}
+        {% else %}
+            {{ form.content(class='form-control w-50') }}
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        {{ form.submit(class='btn btn-primary me-5') }}
+    </div>
+{% endblock %}

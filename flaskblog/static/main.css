@@ -1,0 +1,24 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(33 36 41);
+}
+h1,h2,h3,h4,h5,h6{
+    color: whitesmoke;
+}
+.txt{
+    color: whitesmoke;
+}
+.img{
+    width: 125px;
+    height: 125px;
+}
+.art_img{
+    width: 65px;
+    height: 65px;
+}
+
+.nav-link:hover {
+    color: cyan !important;
+}
